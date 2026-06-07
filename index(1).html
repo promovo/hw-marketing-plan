@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Are House Work — 2027 Marketing Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0A0A0A;
+    --off-white: #F5F3EE;
+    --warm-white: #FAF8F4;
+    --accent: #E8FF47;
+    --accent2: #FF4D4D;
+    --mid: #1A1A1A;
+    --card-bg: #161616;
+    --border: rgba(255,255,255,0.15);
+    --text-muted: rgba(245,243,238,0.70);
+    --text-dim: rgba(245,243,238,0.92);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --big-color: #E8FF47;
+    --mid-color: #47FFD4;
+    --small-color: #FF9147;
+    --travel-color: #C447FF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* LOGO */
+  .header-logo {
+    margin-bottom: 1.5rem;
+  }
+  .header-logo svg {
+    width: 200px;
+    height: auto;
+    display: block;
+  }
+
+  /* HEADER */
+  .site-header {
+    padding: 3rem 2rem 2rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: 'WAH';
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-family: var(--font-display);
+    font-size: clamp(120px, 20vw, 220px);
+    color: rgba(255,255,255,0.025);
+    pointer-events: none;
+    line-height: 1;
+    letter-spacing: -4px;
+  }
+  .header-inner { max-width: 1100px; margin: 0 auto; }
+  .header-eyebrow {
+    font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.5rem;
+  }
+  .header-meta {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    font-size: 14px; color: var(--text-muted);
+  }
+  .header-meta strong { color: var(--text-dim); }
+
+  /* NAV TABS */
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; gap: 0;
+  }
+  .nav-tab {
+    padding: 14px 20px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { color: var(--off-white); }
+  .nav-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* MAIN */
+  .main { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* SECTION HEADERS */
+  .section-header { margin-bottom: 1.5rem; }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 5vw, 56px);
+    letter-spacing: 1px;
+    color: var(--off-white);
+    line-height: 1;
+  }
+  .section-title span { color: var(--accent); }
+  .section-sub { font-size: 15px; color: var(--text-muted); margin-top: 8px; }
+
+  /* EVENT GRID */
+  .event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .event-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .event-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--card-accent-color, var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .event-card:hover { background: #1c1c1c; }
+  .event-card:hover::after { transform: scaleX(1); }
+  .event-card.active-card { background: #1e1e1e; }
+  .event-card.active-card::after { transform: scaleX(1); }
+
+  .card-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500; padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+  }
+  .card-name {
+    font-family: var(--font-display);
+    font-size: 30px; letter-spacing: 0.5px;
+    color: var(--off-white); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .card-slug { font-size: 13px; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .card-date { font-size: 15px; color: var(--text-dim); font-weight: 500; }
+  .card-meta {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+  .card-pill {
+    font-size: 12px; padding: 4px 9px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px; color: var(--text-muted);
+  }
+
+  /* DETAIL PANEL */
+  .detail-panel {
+    margin-top: 1px;
+    background: var(--mid);
+    border: 1px solid var(--border);
+    animation: slideDown 0.25s ease;
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .detail-inner { padding: 2.5rem; }
+  .detail-header {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .detail-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 0.95; letter-spacing: 1px;
+  }
+  .detail-meta { font-size: 14px; color: var(--text-muted); margin-top: 6px; }
+  .close-btn {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    width: 36px; height: 36px;
+    border-radius: 2px;
+    cursor: pointer; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s;
+  }
+  .close-btn:hover { background: rgba(255,255,255,0.12); }
+
+  /* KPI ROW */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+  }
+  .kpi-cell {
+    background: var(--card-bg);
+    padding: 1rem 1.25rem;
+  }
+  .kpi-val {
+    font-family: var(--font-display);
+    font-size: 38px; letter-spacing: 1px;
+    color: var(--off-white); line-height: 1;
+  }
+  .kpi-label { font-size: 13px; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 6px; }
+
+  /* PHASE BAR */
+  .phase-label-text { font-size: 13px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .phase-bar { display: flex; height: 8px; gap: 2px; margin-bottom: 0.75rem; }
+  .phase-seg { height: 100%; border-radius: 1px; transition: opacity 0.2s; }
+  .phase-seg:hover { opacity: 0.7; }
+  .phase-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .phase-legend-item { font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+  .phase-dot { width: 8px; height: 8px; border-radius: 1px; flex-shrink: 0; }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 1.5rem; }
+  .col-block { background: var(--card-bg); padding: 1.25rem; }
+  .col-title { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .tactic-item { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 15px; color: var(--text-dim); line-height: 1.6; }
+  .tactic-item:last-child { border-bottom: none; }
+  .tactic-num { font-family: var(--font-display); font-size: 22px; color: rgba(255,255,255,0.25); flex-shrink: 0; line-height: 1.2; }
+  .info-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 15px; }
+  .info-row:last-child { border-bottom: none; }
+  .info-key { color: var(--text-muted); }
+  .info-val { color: var(--off-white); text-align: right; font-weight: 500; }
+
+  /* CONTENT TABLE */
+  .table-wrap { overflow-x: auto; }
+  .content-table { width: 100%; border-collapse: collapse; min-width: 560px; }
+  .content-table th {
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 500;
+    padding: 8px 12px; text-align: left;
+    border-bottom: 1px solid var(--border);
+    background: var(--black);
+    white-space: nowrap;
+  }
+  .content-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px; color: var(--text-dim);
+    vertical-align: top;
+  }
+  .content-table tr:last-child td { border-bottom: none; }
+  .content-table tr:hover td { background: rgba(255,255,255,0.04); }
+  .tag {
+    display: inline-block; font-size: 12px; font-weight: 500;
+    padding: 2px 7px; border-radius: 2px; white-space: nowrap;
+  }
+  .tag-when { background: rgba(232,255,71,0.1); color: var(--accent); }
+  .tag-type { background: rgba(71,255,212,0.1); color: #47FFD4; }
+
+  /* ANNUAL SECTION */
+  .year-strip {
+    display: flex; gap: 1px; background: var(--border);
+    border: 1px solid var(--border); margin-bottom: 1.5rem;
+    overflow-x: auto;
+  }
+  .month-cell {
+    flex: 1; min-width: 60px;
+    background: var(--card-bg);
+    padding: 10px 6px; text-align: center;
+  }
+  .month-cell.has-event { background: #161616; }
+  .month-name-text { font-size: 12px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  .month-event-text { font-size: 12px; font-weight: 500; line-height: 1.3; }
+
+  .pillar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 1.5rem; }
+  .pillar-cell { background: var(--card-bg); padding: 1.25rem; }
+  .pillar-icon { font-size: 22px; margin-bottom: 8px; }
+  .pillar-name { font-family: var(--font-display); font-size: 24px; letter-spacing: 0.5px; color: var(--off-white); margin-bottom: 6px; }
+  .pillar-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+  .channel-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 1.5rem; }
+  .channel-row { background: var(--card-bg); display: grid; grid-template-columns: 130px 1fr 120px 1fr; gap: 1px; }
+  .channel-row.header { background: var(--black); }
+  .channel-cell { padding: 12px 16px; font-size: 14px; }
+  .channel-cell.ch-head { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+
+  .tactic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .tactic-card { background: var(--card-bg); padding: 1.25rem; }
+  .tactic-card-title { font-weight: 500; color: var(--off-white); margin-bottom: 6px; font-size: 15px; }
+  .tactic-card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ASSETS SECTION */
+  .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .filter-btn {
+    padding: 7px 14px; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text-muted);
+    cursor: pointer; transition: all 0.15s;
+    border-radius: 2px;
+  }
+  .filter-btn:hover { border-color: rgba(255,255,255,0.3); color: var(--off-white); }
+  .filter-btn.active { background: var(--accent); color: var(--black); border-color: var(--accent); }
+
+  .asset-count { font-size: 14px; color: var(--text-muted); margin-bottom: 10px; }
+
+  /* SUBSECTION LABELS */
+  .subsection-label {
+    font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 0.75rem;
+    margin-top: 1.75rem;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .subsection-label:first-child { margin-top: 0; }
+
+  /* FOOTER */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 600px) {
+    .main { padding: 1.25rem; }
+    .two-col { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: repeat(3, 1fr); }
+    .channel-row { grid-template-columns: 1fr 1fr; }
+    .nav-tab { padding: 12px 12px; font-size: 11px; }
+    .site-header { padding: 2rem 1.25rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 221 135.4" aria-label="We Are House Work" role="img">
+        <style>.st0{fill:#FFFFFF;}</style>
+        <g transform="translate(-18.054 -39.068)">
+          <path class="st0" d="M29.2,89.9c-2.8-1.1-3.8-1.8-3.8-3.5c-0.2-1.2,0.6-2.2,1.8-2.4c0.2,0,0.4,0,0.5,0c1.6,0,2.7,0.7,3.6,2.6L36,83c-1.7-3.1-4.9-4.6-8.6-4.6c-5.9,0-8.6,3.4-8.6,8.1c0,4.5,2,7.2,6.8,9c3.3,1.3,4,2,4,3.6c0,1.3-0.6,2.4-2.7,2.4c-1.7,0-3.3-1-4.1-2.5l-4.7,3.5c2.3,3.3,5.3,4.6,9.7,4.6c5.3,0,8.5-3.3,8.5-8.3C36.2,94,34.4,91.9,29.2,89.9z"/>
+          <path class="st0" d="M36.3,39.1v39.8h11.8V50.9h6.7v10.7H61V50.9h6.7v5c2.1-4.6,7.6-6.7,12.2-4.6c2,0.9,3.6,2.5,4.6,4.6v-5h6.7v16.7c0,4.1,0.6,6.1,2.9,6.1c2.3,0,2.9-2,2.9-6.1V50.9h6.7v16.6c0,8.3-4.4,11.7-9.6,11.7c-4.3,0.2-8.2-2.8-9.1-7c-1.4,4.8-4.8,7-8.9,7c-3.7,0.1-7-2-8.4-5.4v5H61V67.2h-6.1v11.7h-3.3v5.6H43v5.1h7.5v5.6H43v6.1h8.6v5.6h3.7l1.9,15.5l3.8-15.5h5.8l3.8,15.5l1.9-15.5h7.3l-0.5,2.7c3.4-3.8,9.3-4.2,13.1-0.8c1,0.9,1.7,1.9,2.3,3.1v-5h9.4c5.5,0,9.2,3,9.2,8.8c0,3.6-1.4,6.1-3.5,7.3l4.4,11.8h-7.1l-3.6-10.6h-2v10.6h-6.7v-5c-1.4,3.4-4.7,5.6-8.4,5.4c-5.2,0-9.2-3.5-9.6-10.9l-1.9,10.5h-6.4l-4.5-16.8l-4.5,16.8h-4.4v10l4.8-10H67l-6.2,11.5l7.3,16.4h-7.6l-4-10.3l-1.7,3.3v7h-6.7v-27.9h4.7l-4.7-26.9l-0.2-1.1H36.3v67.7h135.2v-67.7h67.6V39.1H36.3z"/>
+          <path class="st0" d="M89.1,122.9v-4.4c0-4.6-0.8-6.6-2.9-6.6c-2.1,0-2.9,2-2.9,6.6v4.4c0,4.6,0.8,6.6,2.9,6.6C88.2,129.5,89.1,127.5,89.1,122.9z"/>
+          <path class="st0" d="M106.3,115.6c0-2.7-1.7-3.2-3.6-3.2h-1.6v6.2h1.6C104.7,118.5,106.3,118.2,106.3,115.6z"/>
+          <path class="st0" d="M79,67v-4.4c0-4.6-0.8-6.6-2.9-6.6c-2.1,0-2.9,2-2.9,6.6V67c0,4.6,0.8,6.6,2.9,6.6C78.1,73.6,79,71.6,79,67z"/>
+        </g>
+      </svg>
+    </div>
+    <div class="header-eyebrow">Marketing Plan 2027</div>
+    <div class="header-meta">
+      <span><strong>7 events</strong> across the year</span>
+      <span><strong>2 big shows</strong> · 1000+ cap</span>
+      <span><strong>2 mid-size</strong> · 500 cap</span>
+      <span><strong>2 small</strong> · 300 cap</span>
+      <span><strong>1 travel</strong> · Corfu</span>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-wrap">
+  <div class="nav-inner">
+    <button class="nav-tab active" onclick="showSection('events', this)">Events</button>
+    <button class="nav-tab" onclick="showSection('annual', this)">Annual strategy</button>
+    <button class="nav-tab" onclick="showSection('assets', this)">Content list</button>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- EVENTS -->
+  <div id="section-events" class="section active">
+    <div class="section-header">
+      <h2 class="section-title">All <span>Events</span></h2>
+      <p class="section-sub">Click any event to expand its full marketing plan</p>
+    </div>
+    <div class="event-grid" id="eventGrid"></div>
+    <div id="detailMount"></div>
+  </div>
+
+  <!-- ANNUAL -->
+  <div id="section-annual" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Annual <span>Strategy</span></h2>
+      <p class="section-sub">Year-round brand, channel, and sales approach</p>
+    </div>
+
+    <p class="subsection-label">2027 event calendar</p>
+    <div class="year-strip" id="yearStrip"></div>
+
+    <p class="subsection-label">Brand content pillars</p>
+    <div class="pillar-grid">
+      <div class="pillar-cell">
+        <div class="pillar-icon">🎵</div>
+        <div class="pillar-name">Music & Culture</div>
+        <div class="pillar-desc">DJ previews, track IDs, throwback mixes, genre education. Positions WAH as taste-makers, not just promoters.</div>
+      </div>
+      <div class="pillar-cell">
+        <div class="pillar-icon">🫂</div>
+        <div class="pillar-name">Community</div>
+        <div class="pillar-desc">Crowd content, testimonials, UGC reposts, "family" messaging. Drives FOMO and loyalty simultaneously.</div>
+      </div>
+      <div class="pillar-cell">
+        <div class="pillar-icon">✨</div>
+        <div class="pillar-name">World-Building</div>
+        <div class="pillar-desc">Venue reveals, theme teasers, production sneak peeks. Makes each event feel like an unmissable experience.</div>
+      </div>
+      <div class="pillar-cell">
+        <div class="pillar-icon">⏱</div>
+        <div class="pillar-name">Urgency</div>
+        <div class="pillar-desc">Tier countdowns, sold-out warnings, "who's going" posts. Directly combats the late-buying trend.</div>
+      </div>
+      <div class="pillar-cell">
+        <div class="pillar-icon">🎬</div>
+        <div class="pillar-name">Aftermovies</div>
+        <div class="pillar-desc">Post-event content extends the hype cycle and seeds the next event. Every event is content fuel.</div>
+      </div>
+    </div>
+
+    <p class="subsection-label">Channel strategy</p>
+    <div class="channel-grid">
+      <div class="channel-row header">
+        <div class="channel-cell ch-head">Channel</div>
+        <div class="channel-cell ch-head">Primary role</div>
+        <div class="channel-cell ch-head">Frequency</div>
+        <div class="channel-cell ch-head">Best content</div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-cell" style="color:var(--off-white); font-weight:500;">Instagram</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Brand home & conversions</div>
+        <div class="channel-cell" style="color:var(--text-dim);">5–7× / week</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Reels, Stories, Carousels</div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-cell" style="color:var(--off-white); font-weight:500;">TikTok</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Reach & discovery</div>
+        <div class="channel-cell" style="color:var(--text-dim);">3–5× / week</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Behind-scenes, DJ clips, trending audio</div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-cell" style="color:var(--off-white); font-weight:500;">Facebook</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Events & older demo</div>
+        <div class="channel-cell" style="color:var(--text-dim);">3–4× / week</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Event pages, ticket links, video</div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-cell" style="color:var(--off-white); font-weight:500;">FB Groups</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Community & early access</div>
+        <div class="channel-cell" style="color:var(--text-dim);">2–3× / week</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Polls, exclusive drops, announcements</div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-cell" style="color:var(--off-white); font-weight:500;">Email / SMS</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Ticket sales & loyalty</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Key moments only</div>
+        <div class="channel-cell" style="color:var(--text-dim);">Tier launches, last-chance, early access</div>
+      </div>
+    </div>
+
+    <p class="subsection-label">Combating late buying</p>
+    <div class="tactic-grid">
+      <div class="tactic-card">
+        <div class="tactic-card-title">Tier-based pricing</div>
+        <div class="tactic-card-desc">Early bird → Standard → Final. Price rises visibly as each tier sells. Rewards early action.</div>
+      </div>
+      <div class="tactic-card">
+        <div class="tactic-card-title">Friends-first pre-sale</div>
+        <div class="tactic-card-desc">24-hr community drop before public on-sale. Encourages group bookings and locks in early revenue.</div>
+      </div>
+      <div class="tactic-card">
+        <div class="tactic-card-title">Payment plans</div>
+        <div class="tactic-card-desc">Spread cost over 3–6 months. Directly addresses cost-of-living hesitation. Essential for big shows and Corfu.</div>
+      </div>
+      <div class="tactic-card">
+        <div class="tactic-card-title">Final 14-day countdown</div>
+        <div class="tactic-card-desc">Daily posts: remaining ticket count, lineup reveals, crowd testimonials. Creates sustained urgency in the close window.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASSETS -->
+  <div id="section-assets" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Content <span>List</span></h2>
+      <p class="section-sub">All content pieces across all 7 events — filter by type</p>
+    </div>
+    <div class="filter-row" id="filterRow"></div>
+    <div class="asset-count" id="assetCount"></div>
+    <div class="table-wrap">
+      <table class="content-table" id="assetTable">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Date</th>
+            <th>When</th>
+            <th>Type</th>
+            <th>Asset</th>
+            <th>Channels</th>
+          </tr>
+        </thead>
+        <tbody id="assetBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  We Are House Work — 2027 Marketing Plan &nbsp;·&nbsp; Confidential
+</footer>
+
+<script>
+const EVENTS = [
+  {
+    id: 0, name: "Space Odyssey", slug: "OUTERNET // LDN — TAKING YOU TO THE OUTER RIM",
+    date: "End Feb 2027", type: "big", capacity: "1,000+", venue: "Outernet, London",
+    theme: "Outer Rim / Space", leadDays: 100, typeLabel: "Big Show",
+    accentColor: "#E8FF47",
+    phases: [
+      { label: "Awareness — day –100 to –60", w: 40, color: "#3A6E2E" },
+      { label: "Consideration — day –60 to –30", w: 30, color: "#5EA84C" },
+      { label: "Conversion — day –30 to –7", w: 20, color: "#8AD677" },
+      { label: "Last push — day –7 to event", w: 10, color: "#E8FF47" }
+    ],
+    kpis: [
+      { val: "1,000+", label: "Capacity" },
+      { val: "100 days", label: "Lead time" },
+      { val: "13", label: "Content pieces" }
+    ],
+    tactics: [
+      "Announce with a cinematic teaser — zero info, pure atmosphere. Drop clues over 7 days.",
+      "Stage the lineup reveal across 3 separate posts — one name at a time to sustain engagement.",
+      "Venue partnership with Outernet — co-posts and venue Story takeover.",
+      "Paid Meta + TikTok ads from day –90, targeting house music fans in London.",
+      "Early-bird tier drops in the private Facebook group first.",
+      "Space-themed countdown Reels: 10 days, 5 days, 3 days, TOMORROW.",
+      "UGC campaign — fans post space looks, tag for a chance at guestlist."
+    ],
+    info: { Theme: "Outer Rim / Space", Capacity: "1,000+", "Lead time": "100 days", "Primary sell": "Paid social + PR" },
+    content: [
+      { week: "–14 wk", type: "Video", asset: "30s cinematic teaser — no info, pure atmosphere", channel: "IG, TT, FB" },
+      { week: "–12 wk", type: "Static", asset: "Event poster — full artwork, date + ticket link", channel: "IG, FB" },
+      { week: "–12 wk", type: "Video", asset: "Venue walkthrough Reel — Outernet revealed", channel: "IG, TT" },
+      { week: "–10 wk", type: "DJ Lineup", asset: "DJ 1 graphic + 15s preview clip", channel: "IG, TT, FB" },
+      { week: "–9 wk", type: "DJ Lineup", asset: "DJ 2 graphic + 15s preview clip", channel: "IG, TT, FB" },
+      { week: "–8 wk", type: "DJ Lineup", asset: "DJ 3 graphic + full lineup poster", channel: "IG, TT, FB" },
+      { week: "–6 wk", type: "Paid Ad", asset: "30s video ad — lineup + ticket price, retargeting", channel: "Meta, TT" },
+      { week: "–4 wk", type: "Story / Reel", asset: "\"Who's coming?\" poll + community faces collage", channel: "IG Stories" },
+      { week: "–3 wk", type: "Static", asset: "Tier 2 ticket launch graphic with price increase warning", channel: "IG, FB, Email" },
+      { week: "–2 wk", type: "Video", asset: "Previous event highlights / crowd atmosphere clip", channel: "IG, TT, FB" },
+      { week: "–1 wk", type: "Countdown", asset: "Daily Stories: 7, 6, 5… days — remaining ticket count", channel: "IG Stories" },
+      { week: "Event week", type: "Video", asset: "Final FOMO Reel — \"Last tickets\" + crowd content", channel: "IG, TT" },
+      { week: "Post-event", type: "Aftermovie", asset: "2–3 min aftermovie, seeds next event", channel: "YT, IG, FB" }
+    ]
+  },
+  {
+    id: 1, name: "All Back To Mine", slug: "HOUSE PARTY // LDN — KICKING OFF '26. JUST LIKE 96",
+    date: "End Mar 2027", type: "small", capacity: "300", venue: "Intimate / pop-up, LDN",
+    theme: "\"Kicking off '26. Just like 96\"", leadDays: 60, typeLabel: "Small / Pop-up",
+    accentColor: "#FF9147",
+    phases: [
+      { label: "Tease — day –60 to –40", w: 33, color: "#7A3B10" },
+      { label: "On-sale — day –40 to –14", w: 40, color: "#C06020" },
+      { label: "Sell-out push — day –14 to event", w: 27, color: "#FF9147" }
+    ],
+    kpis: [
+      { val: "300", label: "Capacity" },
+      { val: "60 days", label: "Lead time" },
+      { val: "9", label: "Content pieces" }
+    ],
+    tactics: [
+      "Lean into the intimacy — \"you had to be there\" positioning. Make people feel like insiders.",
+      "Venue reveal IS the announcement — secretive, clue-drop approach.",
+      "'96 throwback content series — iconic tracks, fashion, culture from that year.",
+      "\"Only 300 of you\" ticket quantity messaging throughout.",
+      "Push community group pre-sale hard — small event, community loyalty play.",
+      "No paid ads needed if organic + email list is warm enough."
+    ],
+    info: { Theme: "'96 nostalgia / house party", Capacity: "300", "Lead time": "60 days", "Primary sell": "Organic + Email" },
+    content: [
+      { week: "–8 wk", type: "Static", asset: "Mystery teaser — '96 imagery, date only, no venue", channel: "IG, FB" },
+      { week: "–7 wk", type: "Video", asset: "\"Only 300\" announcement Reel — exclusivity messaging", channel: "IG, TT" },
+      { week: "–6 wk", type: "DJ Lineup", asset: "Lineup reveal — single graphic, full DJ list", channel: "IG, FB" },
+      { week: "–5 wk", type: "Paid Ad", asset: "Throwback '96 carousel — tracks, fashion, vibes", channel: "IG" },
+      { week: "–4 wk", type: "Story", asset: "Venue clue Stories — community guesses the location", channel: "IG Stories" },
+      { week: "–3 wk", type: "Static", asset: "Venue reveal post + ticket link drop", channel: "IG, FB, Email" },
+      { week: "–2 wk", type: "Video", asset: "Previous pop-up highlights + testimonial clips", channel: "IG, TT" },
+      { week: "–1 wk", type: "Countdown", asset: "\"X tickets left\" daily Stories", channel: "IG Stories" },
+      { week: "Post-event", type: "Aftermovie", asset: "60s recap + 'next event coming' CTA", channel: "IG, TT" }
+    ]
+  },
+  {
+    id: 2, name: "Never Mind The Balearics", slug: "LDN // ROCKING IT LIKE...",
+    date: "End May 2027", type: "mid", capacity: "500", venue: "East London terrace / cool small club",
+    theme: "Balearic / Ibiza vibes", leadDays: 70, typeLabel: "Mid-size",
+    accentColor: "#47FFD4",
+    phases: [
+      { label: "Awareness — day –70 to –42", w: 40, color: "#0D5C46" },
+      { label: "On-sale — day –42 to –21", w: 30, color: "#1D9E75" },
+      { label: "Sell-out push — day –21 to event", w: 30, color: "#47FFD4" }
+    ],
+    kpis: [
+      { val: "500", label: "Capacity" },
+      { val: "70 days", label: "Lead time" },
+      { val: "10", label: "Content pieces" }
+    ],
+    tactics: [
+      "Post Balearic summer content 2 weeks before the announcement to prime the algorithm.",
+      "Cross-promote CFU26 Corfu trip in this content — both have the same Ibiza energy.",
+      "Open-air terrace venue photography as a teaser — the space sells itself.",
+      "Summer dress code content — fashion plays brilliantly on TikTok.",
+      "Partnership with Balearic music accounts and Spotify playlists."
+    ],
+    info: { Theme: "Balearic / Ibiza vibes", Capacity: "500", "Lead time": "70 days", "Primary sell": "Organic + Light paid" },
+    content: [
+      { week: "–10 wk", type: "Static", asset: "Summer teaser — sun, Balearic colours, no detail yet", channel: "IG" },
+      { week: "–9 wk", type: "Video", asset: "Event announcement Reel — venue vibe + date", channel: "IG, TT, FB" },
+      { week: "–8 wk", type: "Static", asset: "Full poster + early bird ticket launch", channel: "IG, FB, Email" },
+      { week: "–7 wk", type: "DJ Lineup", asset: "DJ reveal series — 2 posts over 2 weeks", channel: "IG, TT" },
+      { week: "–5 wk", type: "Video", asset: "Dress code inspo Reel — Balearic fashion", channel: "IG, TT" },
+      { week: "–4 wk", type: "Paid Ad", asset: "Summer party ad — targeting 28–45 London house fans", channel: "Meta" },
+      { week: "–3 wk", type: "Story", asset: "Venue walkthrough Stories + Q&A", channel: "IG Stories" },
+      { week: "–2 wk", type: "Static", asset: "Ticket tier warning — price going up Friday", channel: "IG, Email" },
+      { week: "–1 wk", type: "Countdown", asset: "Daily countdown Stories", channel: "IG Stories" },
+      { week: "Post-event", type: "Aftermovie", asset: "60–90s summer highlights reel", channel: "IG, TT, FB" }
+    ]
+  },
+  {
+    id: 3, name: "Shipwrecked V.04", slug: "STEAMPUNKED // LDN — ALL ABOARD. THEN MORE ON SHORE",
+    date: "Mid Jun 2027", type: "small", capacity: "300", venue: "Boat party — Thames, London",
+    theme: "Steampunk / nautical", leadDays: 60, typeLabel: "Small / Boat Party",
+    accentColor: "#FF9147",
+    phases: [
+      { label: "Tease — day –60 to –45", w: 25, color: "#7A3B10" },
+      { label: "On-sale — day –45 to –21", w: 40, color: "#C06020" },
+      { label: "Sell-out push — day –21 to event", w: 35, color: "#FF9147" }
+    ],
+    kpis: [
+      { val: "300", label: "Capacity" },
+      { val: "60 days", label: "Lead time" },
+      { val: "10", label: "Content pieces" }
+    ],
+    tactics: [
+      "Boat party = natural content goldmine. Lead with aspirational lifestyle imagery.",
+      "Steampunk costume content — highly shareable, drives organic reach on TikTok.",
+      "\"All aboard\" countdown series — nautical theme carries through all content.",
+      "\"Limited to 300 passengers\" — the cap is the hook, lead with it.",
+      "Partner with costuming accounts for steampunk look inspiration.",
+      "Day-of content strategy: live Stories from the boat, sunset moments, crowd shots."
+    ],
+    info: { Theme: "Steampunk / nautical", Capacity: "300", "Lead time": "60 days", "Primary sell": "Organic heavy" },
+    content: [
+      { week: "–8 wk", type: "Video", asset: "Nautical teaser Reel — mystery boat, steampunk aesthetic", channel: "IG, TT" },
+      { week: "–7 wk", type: "Static", asset: "Event announce poster — steampunk artwork", channel: "IG, FB" },
+      { week: "–6 wk", type: "DJ Lineup", asset: "DJ lineup reveal with on-brand graphic", channel: "IG, FB" },
+      { week: "–5 wk", type: "Video", asset: "Costume inspo Reel — steampunk outfit ideas", channel: "TT, IG" },
+      { week: "–4 wk", type: "Story", asset: "\"300 passengers only\" urgency Stories + poll", channel: "IG Stories" },
+      { week: "–3 wk", type: "Static", asset: "Boat reveal — photos/video of the vessel", channel: "IG, FB" },
+      { week: "–2 wk", type: "Video", asset: "Previous Shipwrecked highlight reel (V.03 footage)", channel: "IG, TT, FB" },
+      { week: "–1 wk", type: "Countdown", asset: "\"X spots left\" daily Stories", channel: "IG Stories" },
+      { week: "Event day", type: "Live / Stories", asset: "Live from the boat — Thames, sunset, crowd", channel: "IG Live" },
+      { week: "Post-event", type: "Aftermovie", asset: "Boat highlights + \"V.05 coming\" tease", channel: "IG, TT, FB" }
+    ]
+  },
+  {
+    id: 4, name: "CFU26", slug: "THE ULTIMATE GREEK ODYSSEY — CORFU",
+    date: "Mid Sept 2027", type: "travel", capacity: "Group travel", venue: "Corfu, Greece",
+    theme: "Greek Odyssey / neon / pool & boat parties", leadDays: 180, typeLabel: "Travel Event",
+    accentColor: "#C447FF",
+    phases: [
+      { label: "Awareness — 6 months out", w: 30, color: "#3D1C5C" },
+      { label: "Booking push — 4–3 months", w: 25, color: "#6B3499" },
+      { label: "Payment & FOMO — 2–1 months", w: 25, color: "#9B57CC" },
+      { label: "Hype countdown — final 4 weeks", w: 20, color: "#C447FF" }
+    ],
+    kpis: [
+      { val: "Group", label: "Capacity" },
+      { val: "180 days", label: "Lead time" },
+      { val: "13", label: "Content pieces" }
+    ],
+    tactics: [
+      "Corfu destination content first — lifestyle, food, beaches. Make people want to go, then connect it to WAH.",
+      "Greek Odyssey theme world-building: costumes, neon, pool party imagery throughout.",
+      "Payment plan promotion from January — spread cost over 6 months.",
+      "\"Who's coming?\" series — names, faces, groups booking together. Peer pressure is a powerful sell.",
+      "Packing guides, itinerary reveals, venue teases build pre-trip excitement.",
+      "Previous travel event content as social proof — \"look what happened last time.\"",
+      "30-day countdown series — daily destination facts + WAH-branded content."
+    ],
+    info: { Theme: "Greek Odyssey / neon / pool & boat", Capacity: "Group travel", "Lead time": "180 days", "Primary sell": "Organic + Email + Paid" },
+    content: [
+      { week: "–26 wk", type: "Video", asset: "Corfu destination reel — lifestyle, beaches, vibe", channel: "IG, TT, FB" },
+      { week: "–24 wk", type: "Static", asset: "CFU26 announcement poster — Greek Odyssey artwork", channel: "IG, FB, Email" },
+      { week: "–20 wk", type: "Video", asset: "Previous travel event aftermovie — social proof", channel: "IG, TT, FB, YT" },
+      { week: "–18 wk", type: "Static", asset: "Payment plan launch — \"from £X/month\" graphic", channel: "IG, FB, Email" },
+      { week: "–16 wk", type: "DJ Lineup", asset: "Artist / DJ reveal — travel lineup announcement", channel: "IG, TT, FB" },
+      { week: "–12 wk", type: "Video", asset: "Venue reveal Reel — hotel, pool, boat", channel: "IG, TT" },
+      { week: "–10 wk", type: "Static", asset: "Theme inspo carousel — Greek Odyssey / neon costume ideas", channel: "IG" },
+      { week: "–8 wk", type: "Paid Ad", asset: "Travel event ad — targeting house fans 28–45, UK-wide", channel: "Meta, TT" },
+      { week: "–6 wk", type: "Story", asset: "\"Who's going?\" group reveal Stories + squad booking CTA", channel: "IG Stories" },
+      { week: "–4 wk", type: "Video", asset: "30-day countdown begins — daily Greek Odyssey content", channel: "IG, TT daily" },
+      { week: "–2 wk", type: "Static", asset: "Packing guide carousel — what to bring, dress code", channel: "IG" },
+      { week: "Event week", type: "Live / Stories", asset: "Daily Stories from Corfu — pool, boat, parties", channel: "IG Stories / Live" },
+      { week: "Post-event", type: "Aftermovie", asset: "Full CFU26 aftermovie — cinematic, seeds next trip", channel: "YT, IG, TT, FB" }
+    ]
+  },
+  {
+    id: 5, name: "Ocho", slug: "BIRTHDAY CELEBRATIONS // LDN — 8 TIMES ROUND THE SUN",
+    date: "Mid Oct 2027", type: "mid", capacity: "500", venue: "Club / interesting venue, LDN",
+    theme: "8 Times Round The Sun — milestone birthday", leadDays: 70, typeLabel: "Mid-size",
+    accentColor: "#47FFD4",
+    phases: [
+      { label: "Awareness — day –70 to –42", w: 40, color: "#0D5C46" },
+      { label: "On-sale — day –42 to –21", w: 30, color: "#1D9E75" },
+      { label: "Sell-out push — day –21 to event", w: 30, color: "#47FFD4" }
+    ],
+    kpis: [
+      { val: "500", label: "Capacity" },
+      { val: "70 days", label: "Lead time" },
+      { val: "10", label: "Content pieces" }
+    ],
+    tactics: [
+      "\"8\" is the entire creative hook — 8 DJs, 8 reasons to come, 8 years of WAH throwbacks.",
+      "Nostalgia content plays brilliantly here — archive photos, early WAH moments, the journey.",
+      "Birthday party energy with a house music edge — cake and confetti aesthetic done with attitude.",
+      "Community birthday wall — fans post their favourite WAH memories, you repost the best.",
+      "Groups of 8 get priority access — drives group bookings and the theme simultaneously.",
+      "Push early in October — post-summer, post-Corfu, people are back and ready to book."
+    ],
+    info: { Theme: "8 Times Round The Sun / birthday", Capacity: "500", "Lead time": "70 days", "Primary sell": "Organic + Light paid" },
+    content: [
+      { week: "–10 wk", type: "Video", asset: "WAH history Reel — throwback to year 1, the journey", channel: "IG, TT, FB" },
+      { week: "–9 wk", type: "Static", asset: "Ocho poster — \"8 times round the sun\" artwork", channel: "IG, FB" },
+      { week: "–8 wk", type: "Static", asset: "Ticket launch + early bird price graphic", channel: "IG, FB, Email" },
+      { week: "–7 wk", type: "DJ Lineup", asset: "\"8 DJs. 1 night\" lineup reveal", channel: "IG, TT, FB" },
+      { week: "–5 wk", type: "Video", asset: "\"8 reasons to come\" Reel — punchy and shareable", channel: "IG, TT" },
+      { week: "–4 wk", type: "Story", asset: "Community memories wall — UGC repost campaign", channel: "IG Stories" },
+      { week: "–3 wk", type: "Paid Ad", asset: "Birthday party retargeting ad — warm audience", channel: "Meta" },
+      { week: "–2 wk", type: "Static", asset: "Tier 2 warning + remaining capacity", channel: "IG, Email" },
+      { week: "–1 wk", type: "Countdown", asset: "Daily birthday countdown Stories", channel: "IG Stories" },
+      { week: "Post-event", type: "Aftermovie", asset: "Ocho celebration highlights — emotional, milestone feel", channel: "IG, TT, FB, YT" }
+    ]
+  },
+  {
+    id: 6, name: "Bad Santa 5", slug: "COME AGAIN // LDN — BACK LIKE THE RENEGADE SANTA",
+    date: "Early Dec 2027", type: "big", capacity: "1,000+", venue: "Ministry of Sound / KOKO / similar",
+    theme: "Renegade Santa / anti-corporate Christmas", leadDays: 100, typeLabel: "Big Show",
+    accentColor: "#E8FF47",
+    phases: [
+      { label: "Awareness — day –100 to –60", w: 40, color: "#3A6E2E" },
+      { label: "Consideration — day –60 to –30", w: 30, color: "#5EA84C" },
+      { label: "Conversion — day –30 to –7", w: 20, color: "#8AD677" },
+      { label: "Last push — day –7 to event", w: 10, color: "#E8FF47" }
+    ],
+    kpis: [
+      { val: "1,000+", label: "Capacity" },
+      { val: "100 days", label: "Lead time" },
+      { val: "14", label: "Content pieces" }
+    ],
+    tactics: [
+      "Christmas party booking season starts in September — be first in market before anyone else.",
+      "\"Bad Santa\" identity is irreverent and anti-corporate — the opposite of cheesy work Christmas parties.",
+      "Target office workers actively — position WAH as the cool alternative to the work do.",
+      "Gift a ticket campaign in November — tap into the Christmas gifting window.",
+      "Costume content is viral gold — Bad Santa, ugly sweaters, renegade elves.",
+      "Group booking push in October: \"sort Christmas in one go, bring your squad.\"",
+      "Dec 1 advent countdown: 24-day content series, one post per day to event."
+    ],
+    info: { Theme: "Renegade Santa / anti-corporate Xmas", Capacity: "1,000+", "Lead time": "100 days", "Primary sell": "Paid social + PR" },
+    content: [
+      { week: "–14 wk", type: "Video", asset: "Bad Santa teaser — subversive Xmas energy, no details", channel: "IG, TT, FB" },
+      { week: "–13 wk", type: "Static", asset: "Full poster — Bad Santa 5 artwork, date, venue", channel: "IG, FB" },
+      { week: "–12 wk", type: "Static", asset: "Early bird launch — \"treat yourself, sort Xmas now\"", channel: "IG, FB, Email" },
+      { week: "–11 wk", type: "DJ Lineup", asset: "DJ 1 reveal graphic + clip", channel: "IG, TT, FB" },
+      { week: "–10 wk", type: "DJ Lineup", asset: "DJ 2 + 3 reveal — full lineup poster", channel: "IG, TT, FB" },
+      { week: "–9 wk", type: "Paid Ad", asset: "Xmas party alt ad — targeting 28–45 London house fans", channel: "Meta, TT" },
+      { week: "–8 wk", type: "Video", asset: "\"Hate normal Xmas parties?\" tongue-in-cheek Reel", channel: "IG, TT" },
+      { week: "–6 wk", type: "Static", asset: "Gift a ticket campaign launch — shareable graphic", channel: "IG, FB, Email" },
+      { week: "–5 wk", type: "Video", asset: "Costume inspo — Bad Santa / renegade looks", channel: "TT, IG" },
+      { week: "–4 wk", type: "Paid Ad", asset: "Gift retargeting ad — \"still need a Xmas present?\"", channel: "Meta" },
+      { week: "–3 wk", type: "Static", asset: "Tier 2 / final release warning graphic", channel: "IG, FB, Email" },
+      { week: "Dec 1", type: "Video", asset: "Advent countdown begins — 24 days of WAH content", channel: "IG, TT daily" },
+      { week: "Event week", type: "Countdown", asset: "Final FOMO push — last tickets + crowd hype clips", channel: "IG, TT, Stories" },
+      { week: "Post-event", type: "Aftermovie", asset: "Bad Santa 5 aftermovie — tease Bad Santa 6", channel: "YT, IG, TT, FB" }
+    ]
+  }
+];
+
+const MONTHS = [
+  { name: "Jan", event: null, color: null },
+  { name: "Feb", event: "Space Odyssey", color: "#E8FF47" },
+  { name: "Mar", event: "All Back To Mine", color: "#FF9147" },
+  { name: "Apr", event: null, color: null },
+  { name: "May", event: "Never Mind The Balearics", color: "#47FFD4" },
+  { name: "Jun", event: "Shipwrecked V.04", color: "#FF9147" },
+  { name: "Jul", event: null, color: null },
+  { name: "Aug", event: null, color: null },
+  { name: "Sep", event: "CFU26 Corfu", color: "#C447FF" },
+  { name: "Oct", event: "Ocho", color: "#47FFD4" },
+  { name: "Nov", event: null, color: null },
+  { name: "Dec", event: "Bad Santa 5", color: "#E8FF47" }
+];
+
+let activeEventId = null;
+let activeFilter = 'All';
+
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+function renderEvents() {
+  const grid = document.getElementById('eventGrid');
+  grid.innerHTML = EVENTS.map(e => `
+    <div class="event-card ${activeEventId === e.id ? 'active-card' : ''}" 
+         style="--card-accent-color: ${e.accentColor}"
+         onclick="toggleDetail(${e.id})" 
+         id="card-${e.id}">
+      <div class="card-tag" style="background: ${e.accentColor}22; color: ${e.accentColor};">${e.typeLabel} · ${e.capacity}</div>
+      <div class="card-name">${e.name}</div>
+      <div class="card-slug" style="font-size:11px; color: rgba(242,239,233,0.35);">${e.slug}</div>
+      <div class="card-date">${e.date}</div>
+      <div class="card-meta">
+        <span class="card-pill">${e.leadDays}-day plan</span>
+        <span class="card-pill">${e.content.length} assets</span>
+        <span class="card-pill">${e.venue.split(',')[0]}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleDetail(id) {
+  if (activeEventId === id) {
+    activeEventId = null;
+    document.getElementById('detailMount').innerHTML = '';
+  } else {
+    activeEventId = id;
+    showDetail(id);
+  }
+  renderEvents();
+}
+
+function showDetail(id) {
+  const e = EVENTS[id];
+  const mount = document.getElementById('detailMount');
+
+  const phaseBar = e.phases.map(p => `<div class="phase-seg" style="flex:${p.w}; background:${p.color};" title="${p.label}"></div>`).join('');
+  const phaseLegend = e.phases.map(p => `<div class="phase-legend-item"><div class="phase-dot" style="background:${p.color}"></div>${p.label}</div>`).join('');
+  const tactics = e.tactics.map((t, i) => `<div class="tactic-item"><div class="tactic-num">0${i+1}</div><div>${t}</div></div>`).join('');
+  const infoRows = Object.entries(e.info).map(([k,v]) => `<div class="info-row"><span class="info-key">${k}</span><span class="info-val">${v}</span></div>`).join('');
+  const kpiCells = e.kpis.map(k => `<div class="kpi-cell"><div class="kpi-val" style="color:${e.accentColor}">${k.val}</div><div class="kpi-label">${k.label}</div></div>`).join('');
+  const rows = e.content.map(c => `
+    <tr>
+      <td><span class="tag tag-when">${c.week}</span></td>
+      <td><span class="tag tag-type">${c.type}</span></td>
+      <td style="color:var(--off-white)">${c.asset}</td>
+      <td style="color:var(--text-muted); white-space:nowrap;">${c.channel}</td>
+    </tr>
+  `).join('');
+
+  mount.innerHTML = `
+    <div class="detail-panel">
+      <div class="detail-inner">
+        <div class="detail-header">
+          <div>
+            <div class="card-tag" style="background:${e.accentColor}22; color:${e.accentColor}; display:inline-flex; margin-bottom:8px;">${e.typeLabel}</div>
+            <div class="detail-title" style="color:${e.accentColor}">${e.name}</div>
+            <div class="detail-meta">${e.date} &nbsp;·&nbsp; ${e.venue} &nbsp;·&nbsp; ${e.theme}</div>
+          </div>
+          <button class="close-btn" onclick="toggleDetail(${id})">×</button>
+        </div>
+
+        <div class="kpi-row">${kpiCells}</div>
+
+        <p class="phase-label-text">Marketing phases</p>
+        <div class="phase-bar">${phaseBar}</div>
+        <div class="phase-legend">${phaseLegend}</div>
+
+        <div class="two-col">
+          <div class="col-block">
+            <div class="col-title">Key tactics</div>
+            ${tactics}
+          </div>
+          <div class="col-block">
+            <div class="col-title">Event overview</div>
+            ${infoRows}
+          </div>
+        </div>
+
+        <div class="col-title" style="margin-bottom:10px;">Content schedule</div>
+        <div class="table-wrap">
+          <table class="content-table">
+            <thead><tr><th>When</th><th>Type</th><th>Asset</th><th>Channels</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  `;
+
+  mount.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderYearStrip() {
+  document.getElementById('yearStrip').innerHTML = MONTHS.map(m => `
+    <div class="month-cell ${m.event ? 'has-event' : ''}">
+      <div class="month-name-text">${m.name}</div>
+      <div class="month-event-text" style="color:${m.color || 'rgba(242,239,233,0.2)'};">${m.event || '—'}</div>
+    </div>
+  `).join('');
+}
+
+function renderAssets(filter) {
+  activeFilter = filter || 'All';
+  const allContent = EVENTS.flatMap(e => e.content.map(c => ({ ...c, event: e.name, date: e.date, accentColor: e.accentColor })));
+  const allTypes = [...new Set(allContent.map(c => c.type))].sort();
+
+  document.getElementById('filterRow').innerHTML = ['All', ...allTypes].map(t => `
+    <button class="filter-btn ${activeFilter === t ? 'active' : ''}" onclick="renderAssets('${t}')">${t}</button>
+  `).join('');
+
+  const filtered = activeFilter === 'All' ? allContent : allContent.filter(c => c.type === activeFilter);
+  document.getElementById('assetCount').textContent = `${filtered.length} content pieces`;
+  document.getElementById('assetBody').innerHTML = filtered.map(c => `
+    <tr>
+      <td style="font-weight:500; color:${c.accentColor}; white-space:nowrap;">${c.event}</td>
+      <td style="color:var(--text-muted); white-space:nowrap; font-size:11px;">${c.date}</td>
+      <td><span class="tag tag-when">${c.week}</span></td>
+      <td><span class="tag tag-type">${c.type}</span></td>
+      <td style="color:var(--off-white)">${c.asset}</td>
+      <td style="color:var(--text-muted); font-size:11px; white-space:nowrap;">${c.channel}</td>
+    </tr>
+  `).join('');
+}
+
+renderEvents();
+renderYearStrip();
+renderAssets('All');
+</script>
+</body>
+</html>
